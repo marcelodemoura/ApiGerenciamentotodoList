@@ -1,32 +1,35 @@
-package br.com.ApiGerenciador.todoList.user;
+package br.com.ApiGerenciador.todoList.task;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@Getter
-@Setter
-@Entity(name = "tb_users")
-public class UserModel {
+@Entity(name = "tasks")
+public class TaskModel {
 
 
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
+    private String descricao;
+    @Column(length = 50)
+    private String title;
+    private LocalDateTime start;
 
-    @Column(unique = true)
-    private String username;
-    private String name;
-    private String password;
+    private LocalDateTime endAt;
+    private String prioridade;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    private UUID IdUser;
 
 
 }
